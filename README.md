@@ -1,4 +1,4 @@
-# Pixels-RxProgramming
+# Pexels-RxProgramming
 リアクティブプログラミングを使用したMVVMアーキテクチャアプリの実装
 
 ## 課題内容
