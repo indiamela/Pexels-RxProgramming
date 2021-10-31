@@ -23,13 +23,7 @@ struct SearchView: View {
                 VStack{
                     searchBar
                     if viewModel.dataSource.isEmpty {
-                        VStack{
-                            Spacer()
-                            Image(systemName: "magnifyingglass.circle.fill")
-                                .font(.title)
-                            Text("nothing results")
-                            Spacer()
-                        }
+                        nothingResults
                     } else {
                         picturesList
                     }
@@ -41,7 +35,7 @@ struct SearchView: View {
     }
 }
 
-extension SearchView {
+private extension SearchView {
     var searchBar: some View {
         HStack(alignment:.center,spacing: 20) {
             TextField("search", text: $text)
@@ -87,19 +81,19 @@ extension SearchView {
             }
         }
     }
+    var nothingResults: some View {
+        VStack{
+            Spacer()
+            Image(systemName: "magnifyingglass.circle.fill")
+                .font(.title)
+            Text("nothing results")
+            Spacer()
+        }
+    }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(viewModel: PexelsViewModel(apiClient: PexelsAPIClient()))
-    }
-}
-
-struct ActivityIndicator: UIViewRepresentable {
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: .large)
-    }
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        uiView.startAnimating()
     }
 }

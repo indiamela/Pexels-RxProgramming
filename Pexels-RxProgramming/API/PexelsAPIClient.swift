@@ -55,13 +55,6 @@ private extension PexelsAPIClient {
         static let path = "/v1"
     }
     
-    struct OpenWeatherAPI {
-        static let scheme = "https"
-        static let host = "api.openweathermap.org"
-        static let path = "/data/2.5"
-        static let key = "d7193aff3238fb90b6718bcd8e52456d"
-    }
-    
     func searchAPIComponents(
         with text: String
     ) -> URLComponents {
@@ -73,8 +66,6 @@ private extension PexelsAPIClient {
         components.queryItems = [
             URLQueryItem(name: "query", value: text),
         ]
-        
-        
         return components
     }
 }

@@ -10,8 +10,8 @@ import Combine
 
 class PexelsViewModel: ObservableObject{
     @Published var dataSource: [PexelsModel] = []
-    private let apiClient: PexelsAPIClientProtocol
     @Published var loading: Bool = false
+    private let apiClient: PexelsAPIClientProtocol
     private var disposables = Set<AnyCancellable>()
 
     init(
@@ -45,7 +45,7 @@ class PexelsViewModel: ObservableObject{
             .store(in: &disposables)
     }
     
-    func fetchImageData(_ data:PexelsAPIResponce)->[PexelsModel] {
+    private func fetchImageData(_ data:PexelsAPIResponce)->[PexelsModel] {
         var models: [PexelsModel] = []
         for pict in data.photos {
             guard let imageURL = URL(string: pict.src.medium) else { continue }
